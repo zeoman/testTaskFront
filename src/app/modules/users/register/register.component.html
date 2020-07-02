@@ -1,0 +1,65 @@
+<mat-card style="text-align: center" [formGroup]="regFormGroup">
+  <mat-card-title>Регистрация</mat-card-title>
+  <br>
+
+  <mat-form-field appearance="outline" class="register__field">
+    <mat-label>E-mail</mat-label>
+    <input matInput
+           placeholder="username@mail.ru"
+           type="email"
+           formControlName="emailControl"
+    >
+    <mat-error>
+      {{errors.email}}
+    </mat-error>
+  </mat-form-field>
+
+  <br>
+
+  <div formGroupName="passwordGroup">
+    <mat-form-field appearance="outline" class="register__field">
+      <mat-label>Пароль</mat-label>
+      <input matInput
+             placeholder="*******"
+             type="password"
+             formControlName="passwordControl"
+      >
+      <mat-error>
+        {{errors.password}}
+      </mat-error>
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field appearance="outline" class="register__field">
+      <mat-label>Подтвердите пароль</mat-label>
+      <input matInput
+             placeholder="*******"
+             type="password"
+             formControlName="passwordConfirmControl"
+             [errorStateMatcher]="confirmValidParentMatcher"
+             (keydown.enter)="onPressedEvent(regFormGroup)"
+      >
+      <mat-error>
+        {{errors.confirmPassword}}
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <mat-card-actions>
+    <button mat-stroked-button
+            [disabled]="regFormGroup.invalid"
+            (click)="register(regFormGroup.value)">
+      Отправить
+    </button>
+    <br>
+    <a mat-button
+       class="btn-small"
+       style="margin: 2em 0"
+       [routerLink]="['/login']"
+    >
+      Войти
+    </a>
+  </mat-card-actions>
+
+</mat-card>

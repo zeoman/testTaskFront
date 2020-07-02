@@ -1,0 +1,48 @@
+<mat-card style="text-align: center" [formGroup]="loginFormGroup">
+  <mat-card-title>Вход в систему</mat-card-title>
+  <br>
+
+  <mat-form-field appearance="outline" class="login__field">
+    <mat-label>E-mail</mat-label>
+    <input matInput
+           placeholder="username@mail.ru"
+           type="email"
+           formControlName="emailControl"
+    >
+    <mat-error>
+      {{errors.email}}
+    </mat-error>
+  </mat-form-field>
+
+  <br>
+
+  <mat-form-field appearance="outline" class="login__field">
+    <mat-label>Пароль</mat-label>
+    <input matInput
+           placeholder="*******"
+           type="password"
+           formControlName="passwordControl"
+           (keydown.enter)="enterPressedEvent(loginFormGroup)"
+    >
+    <mat-error>
+      {{errors.password}}
+    </mat-error>
+  </mat-form-field>
+
+  <mat-card-actions>
+
+    <button mat-stroked-button
+            [disabled]="loginFormGroup.invalid"
+            (click)="login(loginFormGroup.value)">
+      Войти
+    </button>
+    <br>
+    <a mat-button
+       class="btn-small"
+       style="margin: 2em 0"
+       [routerLink]="['/register']"
+    >
+      Нет аккаунта?
+    </a>
+  </mat-card-actions>
+</mat-card>

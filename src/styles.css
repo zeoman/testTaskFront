@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.page-header {
+  margin-top: 2vh;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.page__title {
+  justify-self: center;
+}
+.form-align {
+  display: flex;
+  justify-content: center;
+}
+.btn-small {
+  font-size: 0.7rem;
+}
+.router-active-link {
+  color: #3f51b5;
+}
+

@@ -1,0 +1,38 @@
+<div class="page-header">
+    <button mat-stroked-button (click)="logout()">Выйти из системы</button>
+</div>
+<div class="main-container">
+    <div class="chart-container">
+        <ngx-charts-bar-horizontal
+                (window:resize)="onResize($event)"
+                [view]="view"
+                [scheme]="colorScheme"
+                [results]="data"
+                [xAxis]="showXAxis"
+                [yAxis]="showYAxis"
+                [showDataLabel]="showDataLabel">
+        </ngx-charts-bar-horizontal>
+    </div>
+    <form class="selects-container" [formGroup]="selectFormGroup" >
+        <mat-form-field appearance="fill" >
+            <mat-label>Категория</mat-label>
+            <mat-select formControlName="nameSelect">
+                <mat-option *ngFor="let category of categoriesForSelect"
+                            [value]="category.value"
+                >
+                    {{category.viewValue}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill" >
+            <mat-label>Значение</mat-label>
+            <mat-select formControlName="valueSelect">
+                <mat-option *ngFor="let value of valuesForSelect" [value]="value.value">
+                    {{value.viewValue}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </form>
+</div>
+
